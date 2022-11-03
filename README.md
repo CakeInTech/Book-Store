@@ -1,62 +1,64 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# BookStore CMS
 
-> Description the project.
+> A fun site that allows you to add a book and an author then Posts on the api and display the books. used React, Javascript, CSS.
 
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- Html, CSS, Javascript
+- Bootstrap, React
+- Node.js and npm package manager
 
-## Live Demo (if available)
-
-[Live Demo Link](https://livedemo.com)
+## For Live Demo :  
+[Click here](www.liveshow.com)
 
 
 ## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
 ### Setup
+  ```
+  git clone <ssh link>
 
+  ```
 ### Install
-
+    ```
+    npm install
+    ```
 ### Usage
-
+```
+npm start
+```
 ### Run tests
-
+```
+npm test
+```
 ### Deployment
-
+```
+npm run build
+```
 
 
 ## Authors
 
-👤 **Author1**
+👤 **Mohamed Abdulhakim**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+> Software Developer | Currently Learning: Javascript, React, Redux, Ruby, Rails. | Good with Frontend.
 
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- [GitHub](https://github.com/MohamedCK)
+- [Twitter](https://twitter.com/MohamedCK0)
+- [LinkedIn](https://www.linkedin.com/in/mohamed-abdulhakim-2868521b6/)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Please feel free to contact me. 
 
 ## Show your support
 
