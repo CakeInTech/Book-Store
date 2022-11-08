@@ -13,6 +13,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -57,4 +58,3 @@
     "stylelint-scss": "^3.21.0"
   }
 }
-
