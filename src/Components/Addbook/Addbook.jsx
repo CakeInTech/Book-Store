@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+// Action creator
+import { addBook } from '../../redux/books/books';
 import styles from './Addbook.module.css';
 
 function Addbook() {
-  const authorRef = useRef(bookObj);
-  const titleRef = useRef(bookObj);
   const dispatch = useDispatch();
 
   const [bookObj, setBookObj] = useState({
@@ -13,6 +13,9 @@ function Addbook() {
     title: null,
     author: null,
   });
+
+  const authorRef = useRef(bookObj);
+  const titleRef = useRef(bookObj);
 
   const addBookHandler = (added) => {
     added.preventDefault();
@@ -27,12 +30,18 @@ function Addbook() {
     }));
   };
 
+  const dispatcher = (e) => {
+    e.preventDefault();
+    dispatch(addBook(bookObj));
+  };
+
   return (
     <div className={styles.container}>
       <p className={styles.miniheader}>Add New Book</p>
       <form
         className={styles.formContainer}
         onSubmit={() => { addBookHandler(); }}
+        onChange={dispatcher}
       >
         <input
           type="text"
