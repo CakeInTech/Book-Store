@@ -27,14 +27,14 @@ const initialState = [
 ];
 
 // Action Creators
-export const addBook = (book) => ({
+export const addBook = (payload) => ({
   type: ADD_BOOK,
-  book,
+  payload,
 });
 
-export const removeBook = (book) => ({
+export const removeBook = (payload) => ({
   type: REMOVE_BOOK,
-  book,
+  payload,
 });
 
 // Book Reducer
