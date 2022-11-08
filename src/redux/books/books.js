@@ -3,7 +3,28 @@ const ADD_BOOK = 'ADD_BOOK';
 const REMOVE_BOOK = 'REMOVE_BOOK';
 
 // Default State
-const initialState = [];
+const initialState = [
+  {
+    id: 1,
+    title: 'The Black Cat',
+    author: 'Naruto',
+  },
+  {
+    id: 1,
+    title: 'Dark Smasher',
+    author: 'Obito',
+  },
+  {
+    id: 1,
+    title: 'Zearon of light',
+    author: 'Akatski',
+  },
+  {
+    id: 1,
+    title: 'Karisma of purple light',
+    author: 'Sasuke',
+  },
+];
 
 // Action Creators
 export const addBook = (book) => ({
