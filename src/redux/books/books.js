@@ -10,17 +10,17 @@ const initialState = [
     author: 'Naruto',
   },
   {
-    id: 1,
+    id: 2,
     title: 'Dark Smasher',
     author: 'Obito',
   },
   {
-    id: 1,
+    id: 3,
     title: 'Zearon of light',
     author: 'Akatski',
   },
   {
-    id: 1,
+    id: 4,
     title: 'Karisma of purple light',
     author: 'Sasuke',
   },
@@ -39,6 +39,7 @@ export const removeBook = (payload) => ({
 
 // Book Reducer
 const booksReducer = (state = initialState, action) => {
+  // console.log(state);
   switch (action.type) {
     case ADD_BOOK: return [
       ...state,

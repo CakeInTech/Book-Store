@@ -20,18 +20,16 @@ export const removeCategories = (category) => ({
 
 const categoriesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_CATEGORY: return [
-      ...state,
-      action.payload,
-    ];
-    case REMOVE_CATEGORY: return [
-      ...state.filter((each) => each.id !== action.payload.id),
-    ];
-    default: return [
-      {
-        text: 'Under construction',
-      },
-    ];
+    case ADD_CATEGORY:
+      return [...state, action.payload];
+    case REMOVE_CATEGORY:
+      return [...state.filter((each) => each.id !== action.payload.id)];
+    default:
+      return [
+        {
+          text: 'Under construction',
+        },
+      ];
   }
 };
 
