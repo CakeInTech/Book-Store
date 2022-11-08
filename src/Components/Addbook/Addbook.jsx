@@ -14,7 +14,14 @@ function Addbook() {
   });
 
   const addBookHandler = (added) => {
-    console.log(added);
+    added.preventDefault();
+    const title = titleRef.current.value;
+    const author = authorRef.current.value;
+    setBookObj((previusState) => ({
+      ...previusState,
+      title,
+      author,
+    }));
   };
 
   return (
@@ -22,7 +29,7 @@ function Addbook() {
       <p className={styles.miniheader}>Add New Book</p>
       <form
         className={styles.formContainer}
-        onSubmit={addBookHandler}
+        onSubmit={() => { addBookHandler(); }}
       >
         <input
           type="text"
