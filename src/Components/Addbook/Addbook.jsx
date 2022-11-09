@@ -2,14 +2,14 @@ import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 // Action creator
-import { addBook } from '../../redux/books/books';
+import { addNewBook } from '../../redux/books/books';
 import styles from './Addbook.module.css';
 
 function Addbook() {
   const dispatch = useDispatch();
 
   const [bookObj, setBookObj] = useState({
-    id: null,
+    item_id: null,
     title: null,
     author: null,
   });
@@ -21,18 +21,18 @@ function Addbook() {
     added.preventDefault();
     const title = titleRef.current.value;
     const author = authorRef.current.value;
-    const id = uuidv4();
+    const itemId = uuidv4();
     setBookObj((previusState) => ({
       ...previusState,
       title,
       author,
-      id,
+      item_id: itemId,
     }));
   };
 
-  const dispatcher = (e) => {
+  const dispatcher = async (e) => {
     e.preventDefault();
-    dispatch(addBook(bookObj));
+    dispatch(addNewBook(bookObj, dispatch));
   };
 
   return (
