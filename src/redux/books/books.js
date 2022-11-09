@@ -1,30 +1,7 @@
 // Action Type
 const ADD_BOOK = 'ADD_BOOK';
 const REMOVE_BOOK = 'REMOVE_BOOK';
-
-// Default State
-const initialState = [
-  {
-    id: 1,
-    title: 'The Black Cat',
-    author: 'Naruto',
-  },
-  {
-    id: 2,
-    title: 'Dark Smasher',
-    author: 'Obito',
-  },
-  {
-    id: 3,
-    title: 'Zearon of light',
-    author: 'Akatski',
-  },
-  {
-    id: 4,
-    title: 'Karisma of purple light',
-    author: 'Sasuke',
-  },
-];
+const FETCH_BOOK = 'FETCH_BOOK';
 
 // Action Creators
 export const addBook = (payload) => ({
@@ -37,8 +14,13 @@ export const removeBook = (payload) => ({
   payload,
 });
 
+export const fetchBook = (payload) => ({
+  type: FETCH_BOOK,
+  payload,
+});
+
 // Book Reducer
-const booksReducer = (state = initialState, action) => {
+const booksReducer = (state = [], action) => {
   // console.log(state);
   switch (action.type) {
     case ADD_BOOK: return [
@@ -46,8 +28,13 @@ const booksReducer = (state = initialState, action) => {
       action.payload,
     ];
     case REMOVE_BOOK: return [
-      ...state.filter((each) => each.id !== action.payload.id),
+      ...state.filter((each) => each.item_id !== action.payload.item_id),
     ];
+    case FETCH_BOOK:
+      return [
+        ...state,
+        ...action.payload,
+      ];
     default: return state;
   }
 };
