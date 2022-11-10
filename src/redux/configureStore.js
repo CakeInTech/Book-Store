@@ -8,5 +8,10 @@ const rootReducer = configureStore({
     booksReducer,
     categoriesReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoreActions: ['FETCH_BOOK', 'ADD_BOOK', 'REMOVE_BOOK'],
+    },
+  }),
 }, applyMiddleware(thunk));
 export default rootReducer;
