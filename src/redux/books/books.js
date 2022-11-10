@@ -1,55 +1,78 @@
-// Action Type
-const ADD_BOOK = 'ADD_BOOK';
-const REMOVE_BOOK = 'REMOVE_BOOK';
+/* eslint-disable no-param-reassign */
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-// Default State
-const initialState = [
-  {
-    id: 1,
-    title: 'The Black Cat',
-    author: 'Naruto',
-  },
-  {
-    id: 2,
-    title: 'Dark Smasher',
-    author: 'Obito',
-  },
-  {
-    id: 3,
-    title: 'Zearon of light',
-    author: 'Akatski',
-  },
-  {
-    id: 4,
-    title: 'Karisma of purple light',
-    author: 'Sasuke',
-  },
-];
+const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+const apiKey = 'xaZvtxHiDsxHqbPdmxpT';
 
-// Action Creators
-export const addBook = (payload) => ({
-  type: ADD_BOOK,
-  payload,
-});
-
-export const removeBook = (payload) => ({
-  type: REMOVE_BOOK,
-  payload,
-});
-
-// Book Reducer
-const booksReducer = (state = initialState, action) => {
-  // console.log(state);
-  switch (action.type) {
-    case ADD_BOOK: return [
-      ...state,
-      action.payload,
-    ];
-    case REMOVE_BOOK: return [
-      ...state.filter((each) => each.id !== action.payload.id),
-    ];
-    default: return state;
+export const fetchBooks = createAsyncThunk('FETCH_BOOK', async () => {
+  try {
+    const response = axios.get(`${baseURL}/apps/${apiKey}/books`);
+    return response;
+  } catch (error) {
+    return error;
   }
+});
+
+export const addNewBook = createAsyncThunk('ADD_BOOK', async (book) => {
+  try {
+    const { data } = axios.post(`${baseURL}/apps/${apiKey}/books`, book);
+    return data;
+  } catch (error) {
+    return error;
+  }
+});
+
+export const removeBooks = createAsyncThunk('REMOVE_BOOK', async (id) => {
+  try {
+    const response = axios.delete(`${baseURL}/apps/${apiKey}/books/${id}`);
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+
+const initialState = {
+  books: [],
+  loading: 'idle',
 };
 
-export default booksReducer;
+export const booksSlice = createSlice({
+  name: 'books',
+  initialState,
+  extraReducers: (builder) => {
+    builder.addCase(fetchBooks.fulfilled, (state, action) => {
+      let data = [];
+      if (action.payload.data === '') {
+        data = [];
+      } else {
+        const books = Object.keys(action.payload.data).map((key) => {
+          const book = action.payload.data[key][0];
+          return {
+            id: key,
+            ...book,
+          };
+        });
+        data = books;
+      }
+
+      state.books = data;
+    });
+
+    builder.addCase(addNewBook.fulfilled, (state, action) => {
+      const newBook = {
+        id: action.meta.arg.item_id,
+        title: action.meta.arg.title,
+        author: action.meta.arg.author,
+      };
+      state.books.push(newBook);
+      state.loading = 'success';
+    });
+
+    builder.addCase(removeBooks.fulfilled, (state, action) => {
+      state.books = state.books.filter((book) => book.id !== action.meta.arg);
+    });
+  },
+});
+
+export default booksSlice.reducer;

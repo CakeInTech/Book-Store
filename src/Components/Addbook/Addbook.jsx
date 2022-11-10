@@ -1,38 +1,21 @@
-import React, { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
 // Action creator
-import { addBook } from '../../redux/books/books';
+import { addNewBook } from '../../redux/books/books';
 import styles from './Addbook.module.css';
 
 function Addbook() {
   const dispatch = useDispatch();
-
-  const [bookObj, setBookObj] = useState({
-    id: null,
-    title: null,
-    author: null,
-  });
-
-  const authorRef = useRef(bookObj);
-  const titleRef = useRef(bookObj);
-
   const addBookHandler = (added) => {
     added.preventDefault();
-    const title = titleRef.current.value;
-    const author = authorRef.current.value;
-    const id = uuidv4();
-    setBookObj((previusState) => ({
-      ...previusState,
-      title,
-      author,
-      id,
+    dispatch(addNewBook({
+      item_id: uuidv4(),
+      title: added.target.title.value,
+      author: added.target.author.value,
+      category: 'Horror',
     }));
-  };
-
-  const dispatcher = (e) => {
-    e.preventDefault();
-    dispatch(addBook(bookObj));
+    added.target.reset();
   };
 
   return (
@@ -40,28 +23,22 @@ function Addbook() {
       <p className={styles.miniheader}>Add New Book</p>
       <form
         className={styles.formContainer}
-        onSubmit={() => { addBookHandler(); }}
-        onChange={dispatcher}
+        onSubmit={addBookHandler}
       >
         <input
+          id="title"
           type="text"
           placeholder="Title of the book"
           className={styles.input}
-          ref={titleRef}
         />
         <input
+          id="author"
           type="text"
           placeholder="author name"
           className={styles.input}
-          ref={authorRef}
-        />
-        <input
-          type="text"
-          placeholder="category"
-          className={styles.input}
         />
         <button
-          type="button"
+          type="submit"
           value="Add"
           label="Add"
           className={styles.addBtn}
