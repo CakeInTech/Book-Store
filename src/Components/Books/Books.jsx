@@ -1,54 +1,30 @@
-import { useSelector, useDispatch } from 'react-redux';
-// Action Creator
-import { removeBooks } from '../../redux/books/books';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux/es/exports';
+import AddBook from '../Addbook/Addbook';
+import Books from './book';
 import styles from './Books.module.css';
-import Addbook from '../Addbook/Addbook';
+import { fetchBooks } from '../../redux/books/books';
 
-function Books() {
-  // eslint-disable-next-line no-unused-vars
+const BookLists = () => {
   const dispatch = useDispatch();
-  const books = useSelector((state) => state.booksReducer);
-  const removeBookHandler = (object) => {
-    dispatch(removeBooks({
-      payload: object,
-      dispatch,
-    }));
-  };
+  const { books } = useSelector((state) => state.booksReducer);
+
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, []);
 
   return (
     <div className={styles.container}>
-      <div className={styles.bookList}>
-        <ul className={styles.item}>
-          {books.map(({
-            item_id: itemId,
-            title,
-            author,
-          }) => (
-            <li className={styles.listItem} key={itemId}>
-              <span>{title}</span>
-              <span />
-              <span>{author}</span>
-              <span />
-              <span>
-                <button
-                  value="remove"
-                  type="button"
-                  onClick={() => { removeBookHandler({ item_id: itemId }); }}
-                >
-                  Remove Book
-                </button>
-
-              </span>
-
-            </li>
-          ))}
-        </ul>
-      </div>
-      <Addbook />
+      <section className={styles.list}>
+        <Books books={books} />
+      </section>
+      <section>
+        <AddBook />
+      </section>
     </div>
   );
-}
+};
 
-export default Books;
+export default BookLists;
 
 // Unique identifier for the app : xaZvtxHiDsxHqbPdmxpT
