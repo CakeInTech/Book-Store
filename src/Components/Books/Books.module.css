@@ -14,38 +14,19 @@ body {
   display: flex;
   height: 10.625rem;
   border-radius: 4px;
+  border: solid 1px #ececec;
   background-color: #fff;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
-  margin: 12px auto;
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 1.2rem;
 }
 
 .list {
   height: 33rem;
   overflow-y: scroll;
   margin-top: 40px;
-}
-
-/* width */
-.list::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-.list::-webkit-scrollbar-track {
-  border-radius: 15px;
-}
-
-/* Handle */
-.list::-webkit-scrollbar-thumb {
-  background: #0290ffba;
-  border-radius: 15px;
-}
-
-/* Handle on hover */
-.list::-webkit-scrollbar-thumb:hover {
-  background: #0290ff;
 }
 
 .details {
@@ -64,6 +45,7 @@ body {
   color: #121212;
   opacity: 0.5;
   margin-bottom: 0.25rem;
+  font-family: sans-serif;
 }
 
 .details h2 {
