@@ -25,7 +25,7 @@ body {
 
 .list {
   /* height: 33rem; */
-  overflow-y: none;
+  overflow-y: auto;
   margin-top: 40px;
 }
 
