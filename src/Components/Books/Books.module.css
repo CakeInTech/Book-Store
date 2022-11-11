@@ -24,8 +24,8 @@ body {
 }
 
 .list {
-  height: 33rem;
-  overflow-y: scroll;
+  /* height: 33rem; */
+  overflow-y: none;
   margin-top: 40px;
 }
 

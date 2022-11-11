@@ -41,7 +41,7 @@ function book(props) {
             <h3>Current Chapter</h3>
             <h4>
               Chapter
-              {Math.floor(Math.random() * 10)}
+              {Math.floor(Math.random() * 10) + 1}
             </h4>
             <button type="button">Update Chapter</button>
           </div>
