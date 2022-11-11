@@ -40,8 +40,8 @@ const initialState = {
 export const booksSlice = createSlice({
   name: 'books',
   initialState,
-  extraReducers: (builder) => {
-    builder.addCase(fetchBooks.fulfilled, (state, action) => {
+  extraReducers: {
+    [fetchBooks.fulfilled]: (state, action) => {
       let data = [];
       if (action.payload.data === '') {
         data = [];
@@ -57,9 +57,8 @@ export const booksSlice = createSlice({
       }
 
       state.books = data;
-    });
-
-    builder.addCase(addNewBook.fulfilled, (state, action) => {
+    },
+    [addNewBook.fulfilled]: (state, action) => {
       const newBook = {
         id: action.meta.arg.item_id,
         title: action.meta.arg.title,
@@ -67,11 +66,10 @@ export const booksSlice = createSlice({
       };
       state.books.push(newBook);
       state.loading = 'success';
-    });
-
-    builder.addCase(removeBooks.fulfilled, (state, action) => {
+    },
+    [removeBooks.fulfilled]: (state, action) => {
       state.books = state.books.filter((book) => book.id !== action.meta.arg);
-    });
+    },
   },
 });
 

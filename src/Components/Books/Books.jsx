@@ -18,7 +18,7 @@ const BookLists = () => {
       <section className={styles.list}>
         <Books books={books} />
       </section>
-      <section>
+      <section className={styles.addbookContainer}>
         <AddBook />
       </section>
     </div>
