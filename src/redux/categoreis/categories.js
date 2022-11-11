@@ -27,7 +27,7 @@ const categoriesReducer = (state = initialState, action) => {
     default:
       return [
         {
-          text: 'Under construction',
+          text: 'UNDER CONSTRUCTION ⚒️',
         },
       ];
   }

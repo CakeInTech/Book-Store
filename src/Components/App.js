@@ -7,13 +7,13 @@ import Header from './Header/Header';
 function App() {
   return (
     <Router>
-      <div>
+      <>
         <Header />
         <Routes>
           <Route exact path="/" element={<Books />} />
           <Route exact path="/categories" element={<Categories />} />
         </Routes>
-      </div>
+      </>
     </Router>
   );
 }

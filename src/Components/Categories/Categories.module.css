@@ -1,0 +1,29 @@
+.CategoriesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  height: 70vh;
+}
+
+.category {
+  padding: 0.5rem 1.375rem;
+  border-radius: 3px;
+  background-color: #0290ff;
+  font-family: 'Roboto Slab', serif;
+  font-size: 0.813rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  margin-top: 1.438rem;
+  text-transform: uppercase;
+  transition: all 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
