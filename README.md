@@ -2,7 +2,7 @@
 
 # BookStore CMS
 
-> A fun site that allows you to add a book and an author then Posts on the api and display the books. used React, Javascript, CSS.
+> Discover a dynamic and interactive website that lets you discover your favorite books and authors. Easily add a book and author to the site and see them displayed on the API. Built with React, Javascript, and CSS, this site offers an enjoyable and seamless experience for book lovers.
 
 
 ## Built With
@@ -12,7 +12,7 @@
 - Node.js and npm package manager
 
 ## For Live Demo :  
-[Click here](www.liveshow.com)
+[Click here](https://cakesbookstore.netlify.app)
 
 
 ## Getting Started
